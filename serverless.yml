@@ -48,7 +48,8 @@ provider:
       # the specific table for the stage
       Resource:
         - "Fn::GetAtt": [ NotesTable, Arn ]
-
+  stackTags:
+    application: ${self:service}
 
 functions:
   # Defines an HTTP API endpoint that calls the main function in create.js
@@ -125,4 +126,3 @@ resources:
   # Cognito
   - ${file(resources/cognito-user-pool.yml)}
   - ${file(resources/cognito-identity-pool.yml)}
-  
